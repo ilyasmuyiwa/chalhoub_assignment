@@ -1,44 +1,124 @@
-# Dockerized Magento 2
+# Case Study - Magento 2.4 - Shopfinder GraphQL
 
 ## Prerequisite
 Need Docker install in your machine (https://docs.docker.com/get-docker/)
 
-Please follow below steps to up and run Magento 2 (2.4.1-p1) using Docker.
+Please follow below steps to up and run the project.
 
-1. Download Magento 2.4.1-p1 from below location
-`https://github.com/magento/magento2/archive/2.4.1-p1.tar.gz`
-2. Extract files to `src/magento2-2.4.1-p1` directory.
-3. Update your host file with below entry.
-    `127.0.0.1 www.magento-dev.com`
+1. Clone the repository
+2. Go to chalhoub project folder -> cd chalhoub
+3. Update your host file to magento.local.
 4. Open your terminal and change working directory to project root directory.
 5. Run `docker-compose up -d`.
-6. Run `docker exec -it magentoApp bash` to connect to the magento2 container.
-7. Run `composer install`
-8. Change folder to `bin` by executing `cd bin`
-9. Execute below command.
-   ````
-   ./magento setup:install \
-    --base-url=http://www.magento-dev.com/ \
-    --db-host=db \
-    --db-name=appDB \
-    --db-user=root \
-    --db-password=hello123 \
-    --admin-firstname=admin \
-    --admin-lastname=admin \
-    --admin-email=admin@admin.com \
-    --admin-user=admin \
-    --admin-password=admin123 \
-    --language=en_US \
-    --currency=USD \
-    --timezone=America/Chicago \
-    --use-rewrites=1 \
-    --search-engine=elasticsearch7 \
-    --elasticsearch-host=es \
-    --elasticsearch-port=9200
-   ````
-10. Open your browser and navigate to `www.magento-dev.com`
+6. Open your browser and navigate to magento.local
+   ```
+   admin_url : magento.local/admin
+   admin_username: admin
+   admin_password: admin123
+   mysql_username: magento
+   mysql_password: magento
+   ```
 
-## Note
+## To install ShopFinder Module
 
-If you are using Apple Silicon Chip you can use this setup without any issue. If you are using Intel Chip please follow docker-compose.yml file comments.
-# chalhoub_assignment
+1. cd to appdata
+2. Run composer require chalhoub/module-shopfinder
+3. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1` bash.
+4. Run deployment commands
+   ```
+    bin/magento setup:upgrade
+    bin/magento setup:di:compile
+    bin/magento c:f
+   ```
+   
+## GraphQl Sample Request 
+  ### Endpoint -> https://magento2.local/graphql
+  
+ - To fetch all the shops
+    ```
+    {
+       fetchShop(
+        pageSize: 10
+        currentPage: 1
+      ) {
+        total_count
+        items {
+          shop_name
+          Identifier
+          Country
+          Image
+        }
+      }
+    }
+    ```
+
+- To fetch a single Shop using Identifier
+   ```
+    {
+      fetchShop(
+        filter: { Identifier: { like: "test" } }
+        pageSize: 10
+        currentPage: 1
+      ) {
+        total_count
+        items {
+          shop_name
+          Identifier
+          Country
+          Image
+        }
+      }
+    }
+    
+    ```
+ - To Update Shop
+   ```
+   mutation {
+    updateShop(
+        id: 2,  
+        input: {
+          shop_name: "Chalhoub Store"
+          Identifier: "new-identifier"
+        }
+      ) {
+        shop {
+          shop_name
+          Identifier
+        }
+      }
+   }
+   
+   ``` 
+ - To Create Shop
+   ```
+   mutation {
+      createShop(
+        input: {
+          shop_name: "Ilyas big Store"
+          Identifier: "snicestftssss"
+          Country: "AQ"
+          Image: "test.png"
+
+        }
+      ) {
+        shop {
+          shop_name
+        }
+      }
+   }
+
+   ``` 
+ - To delete a Shop
+  
+  ```
+  mutation {
+  deleteShop(id: 2)
+  } 
+  ```  
+   
+
+
+
+
+
+   
