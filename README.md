@@ -33,7 +33,7 @@ Please follow below steps to up and run the project.
    ```
    
 ## GraphQl Sample Request 
-  ### Endpoint -> https://magento2.local/graphql
+  ### Endpoint -> https://magento.local/graphql
   
  - To fetch all the shops
     ```
