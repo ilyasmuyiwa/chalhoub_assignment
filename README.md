@@ -3,7 +3,7 @@
 ## Prerequisite
 Need Docker install in your machine (https://docs.docker.com/get-docker/)
 
-##### Note: Magento is already installed 
+##### Note: Fresh Magento 2.4.3-p1 with sample data is already installed 
 
 Please follow below steps to up and run the project.
 
