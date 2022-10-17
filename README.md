@@ -3,11 +3,13 @@
 ## Prerequisite
 Need Docker install in your machine (https://docs.docker.com/get-docker/)
 
+### Note: Magento is already installed 
+
 Please follow below steps to up and run the project.
 
 1. Clone the repository
 2. Go to chalhoub project folder -> cd chalhoub
-3. Update your host file to magento.local.
+3. Update your host file to magento.local
 4. Open your terminal and change working directory to project root directory.
 5. Run `docker-compose up -d`.
 6. Open your browser and navigate to magento.local
