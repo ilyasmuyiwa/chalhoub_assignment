@@ -24,7 +24,7 @@ Please follow below steps to up and run the project.
 
 1. cd to appdata
 2. Run composer require chalhoub/module-shopfinder
-3. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1` bash.
+3. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1 bash`.
 4. Run deployment commands
    ```
     bin/magento setup:upgrade
