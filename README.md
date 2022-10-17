@@ -22,10 +22,9 @@ Please follow below steps to up and run the project.
 
 ## To install ShopFinder Module
 
-1. cd to appdata
+1. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1 bash`.
 2. Run composer require chalhoub/module-shopfinder
-3. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1 bash`.
-4. Run deployment commands
+3. Run deployment commands
    ```
     bin/magento setup:upgrade
     bin/magento setup:di:compile
@@ -76,7 +75,7 @@ Please follow below steps to up and run the project.
    ```
    mutation {
     updateShop(
-        id: 2,  
+        id: 1,  
         input: {
           shop_name: "Chalhoub Store"
           Identifier: "new-identifier"
@@ -96,7 +95,7 @@ Please follow below steps to up and run the project.
       createShop(
         input: {
           shop_name: "Ilyas big Store"
-          Identifier: "snicestftssss"
+          Identifier: "snicest"
           Country: "AQ"
           Image: "test.png"
 
@@ -113,11 +112,11 @@ Please follow below steps to up and run the project.
   
   ```
   mutation {
-  deleteShop(id: 2)
+  deleteShop(id: 1)
   } 
   ```  
-   
 
+#### -.
 
 
 
