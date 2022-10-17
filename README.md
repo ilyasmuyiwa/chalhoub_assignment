@@ -19,6 +19,7 @@ Please follow below steps to up and run the project.
    mysql_username: magento
    mysql_password: magento
    ```
+#### NB: To install https, you can run `bin/setup-ssl magento.local`
 
 ## To install ShopFinder Module
 
@@ -116,7 +117,6 @@ Please follow below steps to up and run the project.
   } 
   ```  
 
-#### -.
 
 
 
