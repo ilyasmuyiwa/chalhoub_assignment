@@ -24,7 +24,7 @@ Please follow below steps to up and run the project.
 ## To install ShopFinder Module
 
 1. Connect to PHP container by running `docker exec -it chalhoub_phpfpm_1 bash`.
-2. Run composer require chalhoub/module-shopfinder
+2. Run `composer require chalhoub/module-shopfinder`
 3. Run deployment commands
    ```
     bin/magento setup:upgrade
