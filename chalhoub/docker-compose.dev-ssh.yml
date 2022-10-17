@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    volumes: &appvolumes
+      - ./appdata/nginx.conf.sample:/var/www/html/nginx.conf:cached
+
+  phpfpm:
+    volumes: *appvolumes
+
+  ssh:
+    image: markoshust/ssh
+    ports:
+      - "22:22"
+    volumes: *appvolumes

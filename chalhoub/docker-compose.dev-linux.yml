@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  app:
+    volumes: &appvolumes
+      - ./appdata/nginx.conf.sample:/var/www/html/nginx.conf:cached
+      - ./appdata:/var/www/html:cached
+
+  phpfpm:
+    volumes: *appvolumes

@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    volumes: &appvolumes
+      ## Host mounts with performance penalty, only put what is necessary here
+      - ./appdata/app/code:/var/www/html/app/code:cached
+      - ./appdata/app/design:/var/www/html/app/design:cached
+      - ./appdata/app/etc:/var/www/html/app/etc:cached
+      - ./appdata/composer.json:/var/www/html/composer.json:cached
+      - ./appdata/composer.lock:/var/www/html/composer.lock:cached
+      - ./appdata/grunt-config.json.sample:/var/www/html/grunt-config.json:cached
+      - ./appdata/Gruntfile.js.sample:/var/www/html/Gruntfile.js:cached
+      - ./appdata/nginx.conf.sample:/var/www/html/nginx.conf:cached
+      - ./appdata/package.json.sample:/var/www/html/package.json:cached
+      #- ./src/auth.json:/var/www/html/auth.json:cached
+      #- ./src/m2-hotfixes:/var/www/html/m2-hotfixes:cached
+      #- ./src/patches:/var/www/html/patches:cached
+      #- ./src/var/log:/var/www/html/var/log:cached
+      #- ./src/var/report:/var/www/html/var/report:cached
+
+  phpfpm:
+    volumes: *appvolumes
